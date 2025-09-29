@@ -1,0 +1,36 @@
+Sad Servers - Linux Servers Challenge
+
+1.1 objective: characterize a server: what's its purpose, is it busy, does it have errors?
+
+To find the purpose of a server I ran the following commands:
+
+~$ touch purpose.txt
+~$ ps auxf --sort size > purpose.txt
+~$ nano purpose.txt
+
+- I ran ps auxf --sort size in order to output the processes data in the BSD style format. This ensures that I am able to see all currently running processes on every terminal
+that is currently operating withing the kernel.
+
+- after reading the man handbook I will say that the auxf command does lack security information and more detailed information about the process IDs which would be
+important to know to make searching for errors easier.
+
+After sorting and gathering all of the currently running processes I utilized the nano text editor to insepct the data collected by the ps command. 
+This gave me an easy way to navigate the data and find out that the server is currently running three programs of interest: 
+webapp.py, posgressql database, and a haproxy.
+
+running $ls and seeing that webapp.py was located in the home directory I decided to nano into the file to understand a bit more of what the programs function is.
+Webapp.py attempts to connect to a database and execute queries which would explain why the server also runs postgresql. 
+
+## to investigate webapp.py further I should find out whether or not the sql database that is running on the server matches with the DB parameter in webapp.py.
+## this would help me understand that the webapp.py is used to query the database on the server over the web.
+
+Once I was able to identify the major processes running on the system I then used the following command to help me understand the servers current utilization rates:
+
+$htop
+
+Investigating the utilization details I was about to see that webapp.py is using over 53% of the CPU and the sql database utilizing an additional 9%.
+htop is an important program as it allows me to understand what is using the most 
+
+
+
+1.2 Objective parsing logs and metrics (find/grep/cut/uniq etc)
