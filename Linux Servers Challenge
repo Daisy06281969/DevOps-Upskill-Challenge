@@ -12,7 +12,7 @@ To find the purpose of a server I ran the following commands:
 that is currently operating withing the kernel.
 
 - after reading the man handbook I will say that the auxf command does lack security information and more detailed information about the process IDs which would be
-important to know to make searching for errors easier.
+important to know to make searching for errors easier along with addressing any security concerns.
 
 After sorting and gathering all of the currently running processes I utilized the nano text editor to insepct the data collected by the ps command. 
 This gave me an easy way to navigate the data and find out that the server is currently running three programs of interest: 
